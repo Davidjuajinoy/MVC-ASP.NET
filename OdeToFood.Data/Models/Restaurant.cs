@@ -13,7 +13,8 @@ namespace OdeToFood.Data.Models
 
         //Format de validar
         [Required]
-        [Display(Name ="Tipo de comida")]
+        //[Display(Name ="Tipo de comida")]
+        [MaxLength(255)]
         public string Name { get; set; }
         [Required]
 

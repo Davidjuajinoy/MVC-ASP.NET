@@ -70,6 +70,7 @@ namespace OddeToFood.Web.Controllers
                 {
                     db.Add(restaurante);
                     //return RedirectToAction("Details", new { id = restaurante.Id });
+                    TempData["Mensaje"] = "Creado correctamente";
                     return RedirectToAction("Index");
                 }
                 return View();
@@ -103,6 +104,9 @@ namespace OddeToFood.Web.Controllers
                 db.Edit(restaurante);
                 // TODO: Add update logic here
                 
+                TempData["Mensaje"] = "Editado correctamente";
+
+
                 return RedirectToAction("Index");
             }
             catch
@@ -114,7 +118,14 @@ namespace OddeToFood.Web.Controllers
         // GET: Greeting/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var model = db.Get(id);
+            if (model == null)
+            {
+                return View("Not_found");
+            }
+            
+            return View(model);
+
         }
 
         // POST: Greeting/Delete/5
@@ -124,7 +135,8 @@ namespace OddeToFood.Web.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                db.Delete(id);
+                TempData["Mensaje"] = "Borrado correctamente";
                 return RedirectToAction("Index");
             }
             catch

@@ -2,14 +2,24 @@
 
 @{
     ViewBag.Title = "Index";
+    ViewBag.Message = "Soy un mensaje xD";
 }
 
 <h2>Index</h2>
+davidjuajinoy@hotmail.com @(Model.Count())
 
+@@davidxd
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table table-borderless table-hover">
+
+@foreach (var item in Model)
+{
+    @Html.Partial("_RestaurantSummary", item)
+}
+
+
+@*<table class="table table-borderless table-hover">
     <tr class="bg-info">
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -30,4 +40,10 @@
     </tr>
 }
 
-</table>
+</table>*@
+
+@section footer{ 
+    <div> "David" jajaj</div>
+}
+
+

@@ -25,6 +25,15 @@ namespace OdeToFood.Data.Services
             restaurante.Id = restaurants.Max(x => x.Id) + 1;
         }
 
+        public void Delete(int id)
+        {
+            var exist = Get(id);
+            if (exist != null)
+            {
+                restaurants.Remove(exist);
+            }
+        }
+
         public void Edit(Restaurant restaurante)
         {
             var existe  = Get(restaurante.Id);
